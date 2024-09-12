@@ -5,11 +5,11 @@ import * as Yup from 'yup';
 
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom'; // To get the borrower ID from URL
-import Breadcrumb from "../../component/Breadcrumb";
+import Breadcrumb from "../../common/Breadcrumb";
 import { ArrowLeftIcon } from "@heroicons/react/24/solid";
 import { BorrowerRes } from '../../types/BorrowerType';
 import { fetchBorrowers, updateBorrower } from '../../features/borrower/borrowerThunk';
-import Alert from '../../component/Alert';
+import Alert from '../../common/Alert';
 import { clearMessages, clearValidationMessages } from "../../features/borrower/borrowerSlice";
 import Loader from '../../common/Loader';
 import { AppDispatch, RootState } from '../../app/store';

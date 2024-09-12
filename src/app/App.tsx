@@ -8,6 +8,9 @@ import DefaultLayout from '../component/DefaultLayout';
 import Dashboard from '../pages/Dashboard';
 import AddBorrower from '../pages/Borrower/AddBorrower';
 import EditBorrower from '../pages/Borrower/EditBorrower';
+import Loan from '../pages/Loan';
+import LoanDetail from '../pages/Loan/LoanDetail';
+import AddLoan from '../pages/Loan/AddLoan';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -48,14 +51,36 @@ function App() {
             <PageTitle title="Add New Borrowers" />
             <AddBorrower />
           </>
-        } />
+        }
+        />
         <Route path="/borrower/edit/:id" element={
           <>
             <PageTitle title="Edit Borrowers" />
             <EditBorrower />
           </>
-        } />
-
+        }
+        />
+        <Route path="/loan" element={
+          <>
+            <PageTitle title="Loans" />
+            <Loan />
+          </>
+        }
+        />
+        <Route path="/loan/:id" element={
+          <>
+            <PageTitle title="Loan Detail" />
+            <LoanDetail />
+          </>
+        }
+        />
+        <Route path="/loan/add" element={
+          <>
+            <PageTitle title="Add New Loan" />
+            <AddLoan />
+          </>
+        }
+        />
       </Routes>
     </DefaultLayout>
   );

@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { store } from './app/store.ts';
 import App from './app/App.tsx'
 import './index.css'
+import 'flatpickr/dist/flatpickr.min.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

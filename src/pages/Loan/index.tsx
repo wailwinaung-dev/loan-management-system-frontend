@@ -1,33 +1,32 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchBorrowers } from '../../features/borrower/borrowerThunk';
+import { fetchLoans } from '../../features/loan/loanThunk';
 import { RootState, AppDispatch } from '../../app/store';
 
 import Breadcrumb from "../../common/Breadcrumb"
-import Table from "../../component/BorrowerList"
+import Table from "../../component/LoanList"
 import Loader from '../../common/Loader';
 
-const Borrower = () => {
-
+const Loan = () => {
     const dispatch = useDispatch<AppDispatch>();
-    const { borrowers, loading, error } = useSelector((state: RootState) => state.borrower);
+    const { loans, loading, error } = useSelector((state: RootState) => state.loan);
 
     useEffect(() => {
-        dispatch(fetchBorrowers());
+        dispatch(fetchLoans());
     }, [dispatch]);
 
-    // console.log(borrowers)
+    // console.log(loans)
     if (loading) return <Loader />;
     if (error) return <p>Error: {error}</p>;
 
     return (
         <>
-            <Breadcrumb pageName="Borrowers" linkText="+ Add New Borrower" linkTo="/borrower/add" />
+            <Breadcrumb pageName="Loans" linkText="+ Add New Loan" linkTo="/loan/add" />
 
             {
-                !borrowers.length ? <p className='text-center'>No Data...</p> : (
+                !loans.length ? <p className='text-center'>No Data...</p> : (
                     <div className="flex flex-col gap-10">
-                        <Table borrowerList={borrowers} />
+                        <Table loanList={loans} />
                     </div>
                 )
             }
@@ -36,4 +35,4 @@ const Borrower = () => {
     )
 }
 
-export default Borrower
+export default Loan;

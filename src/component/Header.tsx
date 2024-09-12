@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import LogoIcon from '../images/logo/logo-icon.svg';
+import { BuildingLibraryIcon } from '@heroicons/react/24/solid';
 
 const Header = (props: {
   sidebarOpen: string | boolean | undefined;
@@ -53,7 +53,7 @@ const Header = (props: {
           {/* <!-- Hamburger Toggle BTN --> */}
 
           <Link className="block flex-shrink-0 lg:hidden" to="/">
-            <img src={LogoIcon} alt="Logo" />
+            <BuildingLibraryIcon className='text-blue-950 size-6' />
           </Link>
         </div>
 
