@@ -100,7 +100,18 @@ const borrowerSlice = createSlice({
     });
     builder.addCase(deleteBorrower.rejected, (state, action) => {
       state.loading = false;
-      state.error = action.error.message;
+      if (action.payload && typeof action.payload === 'object') {
+        console.log('if payload is object')
+        if ('error' in action.payload) {
+          console.log('if error in payload')
+          const payload = action.payload as {error: string};
+          console.log(payload)
+          state.error = payload.error
+        }
+      } else {
+        // Handle unexpected error format
+        state.error = action.error.message || 'An unexpected error occurred';
+      }
     });
   },
 });

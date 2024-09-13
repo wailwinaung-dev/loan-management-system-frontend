@@ -11,6 +11,7 @@ import EditBorrower from '../pages/Borrower/EditBorrower';
 import Loan from '../pages/Loan';
 import LoanDetail from '../pages/Loan/LoanDetail';
 import AddLoan from '../pages/Loan/AddLoan';
+import Repayment from '../pages/Repayment';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -78,6 +79,14 @@ function App() {
           <>
             <PageTitle title="Add New Loan" />
             <AddLoan />
+          </>
+        }
+        />
+
+        <Route path="/repayment" element={
+          <>
+            <PageTitle title="Repayment History" />
+            <Repayment />
           </>
         }
         />

@@ -26,7 +26,7 @@ const LoanCard = ({ loan }: LoanCardProps) => {
                     <p className="text-gray-800"><b className="text-gray-500">Loan Amount: </b> ${loan.loanAmount.toFixed(2)}</p>
                     <p className="text-gray-800"><b className="text-gray-500">Loan Type: </b> {loan.loanType}</p>
                     <p className="text-gray-800"><b className="text-gray-500">Interest Rate: </b> {loan.interestRate}%</p>
-                    <p className="text-gray-800"><b className="text-gray-500">Total Interest: </b> ${loan.remainingBalance - loan.loanAmount} </p>
+                    <p className="text-gray-800"><b className="text-gray-500">Total Interest: </b> ${loan.totalInterest?.toFixed(2)} </p>
                     <p className="text-gray-800 capitalize"><b className="text-gray-500">Payment Term:</b> {loan.paymentTerm}</p>
                     <p className="text-gray-800"><b className="text-gray-500">Start Date: </b> {new Date(loan.startDate).toLocaleDateString()}</p>
                     <p className="text-gray-800"><b className="text-gray-500">End Date: </b>{new Date(loan.endDate).toLocaleDateString()}</p>
@@ -38,7 +38,7 @@ const LoanCard = ({ loan }: LoanCardProps) => {
             <div className="mb-6">
                 <h3 className="text-xl font-semibold text-gray-700"><u>Remaining Balance</u></h3>
                 <div className="mt-2">
-                    <p className="text-gray-800">${loan.remainingBalance.toFixed(2)}</p>
+                    <p className="text-gray-800">${loan.remainingBalance > 1 ? loan.remainingBalance.toFixed(2) : '0.00'}</p>
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@ const Alert: React.FC<AlertProps> = ({ message, type, onClose }) => {
     return (
         <div className={`${alertStyles[type]} px-4 py-3 rounded relative`} role="alert">
             <strong className="font-bold">
-                {type === 'error' ? 'Error!' : 'Success!'}
+                {type === 'error' ? 'Error! ' : 'Success! '}
             </strong>
             <span className="block sm:inline">{message}</span>
             <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={onClose}>

@@ -2,11 +2,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import borrowerReducer from '../features/borrower/borrowerSlice';  // example slice
 import loanReducer from '../features/loan/loanSlice'
+import repaymentReducer from '../features/repayment/repaymentSlice';
 
 export const store = configureStore({
   reducer: {
     borrower: borrowerReducer,  // add your slices here
-    loan: loanReducer
+    loan: loanReducer,
+    repayment: repaymentReducer
   }
 });
 

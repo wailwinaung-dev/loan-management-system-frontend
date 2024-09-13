@@ -1,17 +1,10 @@
-interface RepaymentSchedulePrps{
-    repaymentSchedule: Array<{
-        paymentNumber: number;
-        paymentDate: Date;
-        paymentAmount: number;
-        interestPayment: number;
-        principalPayment: number;
-        remainingBalance: number;
-      }>
+import { RepaymentScheduleType } from "../types/RepaymentType";
+interface RepaymentScheduleProps {
+    repaymentSchedule: RepaymentScheduleType[]
 }
-
-const RepaymentSchedule: React.FC<RepaymentSchedulePrps> = ({ repaymentSchedule }) => {
+const RepaymentSchedule: React.FC<RepaymentScheduleProps> = ({ repaymentSchedule }) => {
     return (
-        <div className="mt-8 bg-white rounded-lg shadow-md">
+        <div className="mt-5 bg-white rounded-lg shadow-md w-full">
             <h3 className="text-xl font-semibold text-gray-700 text-center my-3">Repayment Schedule</h3>
             <div className="overflow-x-auto">
                 <table className="min-w-full bg-white">

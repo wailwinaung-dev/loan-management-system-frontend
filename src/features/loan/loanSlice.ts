@@ -1,6 +1,6 @@
 // src/slices/borrowerSlice.ts
 import { createSlice } from '@reduxjs/toolkit';
-import { LoanState } from '../../types/LoanType';
+import { FetchLoanByIdPayload, LoanState } from '../../types/LoanType';
 import { fetchLoans, addLoan, deleteLoan, fetchLoanById } from './loanThunk';
 import { ErrorResponse } from '../../types/ErrorResponseType';
 
@@ -45,9 +45,14 @@ const loanSlice = createSlice({
       state.loading = true;
     });
     builder.addCase(fetchLoanById.fulfilled, (state, action) => {
-      // console.log(action.payload)
-      state.loan = action.payload.loan;
-      state.repaymentSchedule = action.payload.repaymentSchedule;
+      if (action.payload && 'loan' in action.payload && 'repaymentSchedule' in action.payload) {
+        const { loan, repaymentSchedule } = action.payload as FetchLoanByIdPayload;
+        state.loan = loan;
+        state.repaymentSchedule = repaymentSchedule;
+      } else {
+        // Handle unexpected payload structure
+        state.error = 'Unexpected response structure';
+      }
       state.loading = false;
     });
     builder.addCase(fetchLoanById.rejected, (state, action) => {

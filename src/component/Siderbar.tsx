@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { Squares2X2Icon, UserGroupIcon, BuildingLibraryIcon, ArrowLeftIcon, ListBulletIcon } from '@heroicons/react/16/solid';
+import { DocumentTextIcon } from '@heroicons/react/24/solid';
 interface SidebarProps {
     sidebarOpen: boolean;
     setSidebarOpen: (arg: boolean) => void;
@@ -115,8 +116,21 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                                     Loans
                                 </NavLink>
                             </li>
-                            {/* <!-- Menu Item Borrower --> */}
+                            {/* <!-- Menu Item Loan --> */}
 
+                            {/* <!-- Menu Item Repayment --> */}
+                            <li>
+                                <NavLink
+                                    to="/repayment"
+                                    className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${pathname.includes('repayment') &&
+                                        'bg-graydark dark:bg-meta-4'
+                                        }`}
+                                >
+                                    <DocumentTextIcon className='size-6' />
+                                    Repayments
+                                </NavLink>
+                            </li>
+                            {/* <!-- Menu Item Repayment --> */}      
                         </ul>
                     </div>
                     {/* <!-- Menu Group --> */}

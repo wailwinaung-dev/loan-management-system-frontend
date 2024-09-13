@@ -1,7 +1,8 @@
 import { BorrowerRes } from "./BorrowerType";
+import { RepaymentScheduleType } from "./RepaymentType";
 import { ValidationErrors } from "./ValidationErrorType";
 
-export interface LoanReq{
+export interface LoanReq {
     borrowerId: string;  // ID of the borrower
     loanAmount: number;  // Loan amount
     loanType: string;  // Loan type (enum)
@@ -13,12 +14,12 @@ export interface LoanReq{
 // src/types/Borrower.ts
 export interface LoanRes {
     _id?: string;  // Optional because when creating a new borrower, the ID may not exist yet
-    borrowerId: string;  // ID of the borrower
     loanAmount: number;  // Loan amount
     loanType: string;  // Loan type (enum)
     startDate: string;  // Start date of the loan
     endDate: string;  // End date of the loan
     interestRate: number;  // Interest rate
+    totalInterest?: number;
     paymentTerm: string;
     remainingBalance: number
     createdAt?: string; // These fields are added by Mongoose automatically
@@ -33,6 +34,10 @@ export interface LoanState {
     error?: string;
     successMessage?: string;
     validationErrors: ValidationErrors
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    repaymentSchedule: any[]
+    repaymentSchedule: RepaymentScheduleType[]
+}
+
+export interface FetchLoanByIdPayload {
+    loan: LoanRes;
+    repaymentSchedule: RepaymentScheduleType[];
 }

@@ -42,9 +42,6 @@ const Table = ({ loanList }: TableProps) => {
                                 Principle
                             </th>
                             <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
-                                Total Interest
-                            </th>
-                            <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
                                 Remaining Balance
                             </th>
                             <th className="min-w-[120px] py-4 px-4 font-medium text-black dark:text-white">
@@ -78,15 +75,10 @@ const Table = ({ loanList }: TableProps) => {
                                         {differenceInMonths(loan.endDate, loan.startDate)} Months
                                     </p>
                                 </td>
-                                
+
                                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
                                     <p className="text-black dark:text-white">
                                         {numeral(loan.loanAmount).format('0,0')}
-                                    </p>
-                                </td>
-                                <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
-                                    <p className="text-black dark:text-white">
-                                        {numeral(loan.remainingBalance - loan.loanAmount).format('0,0')}
                                     </p>
                                 </td>
                                 <td className="border-b border-[#eee] py-5 px-4 dark:border-strokedark">
@@ -111,9 +103,12 @@ const Table = ({ loanList }: TableProps) => {
                                         <button className="hover:text-primary text-warning" onClick={() => navigate(`/loan/${loan._id}`)}>
                                             <EyeIcon className="size-6" />
                                         </button>
-                                        <button className="hover:text-primary text-danger" onClick={() => handleDelete(loan._id)}>
-                                            <TrashIcon className="size-6" />
-                                        </button>
+                                        {
+                                            loan.loanAmount == loan.remainingBalance ? (
+                                                <button className="hover:text-primary text-danger" onClick={() => handleDelete(loan._id)}>
+                                                    <TrashIcon className="size-6" />
+                                                </button>) : null
+                                        }
                                     </div>
                                 </td>
                             </tr>

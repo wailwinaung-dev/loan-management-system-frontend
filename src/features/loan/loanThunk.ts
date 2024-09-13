@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from '../../api/axios'; // Import your axios instance
-import { LoanReq } from '../../types/LoanType';
+import { FetchLoanByIdPayload, LoanReq } from '../../types/LoanType';
 import { AxiosError } from 'axios';
 
 // Async actions using createAsyncThunk
@@ -9,7 +9,7 @@ export const fetchLoans = createAsyncThunk('loan/fetchAll', async () => {
     return response.data;
   });
 
-  export const fetchLoanById = createAsyncThunk('loan/fetchById', async (id: string) => {
+  export const fetchLoanById = createAsyncThunk<FetchLoanByIdPayload, string>('loan/fetchById', async (id: string) => {
     const response = await axios.get(`/loans/${id}`); // Backend endpoint to fetch loan
     return response.data;
   });
