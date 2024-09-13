@@ -39,7 +39,7 @@ Make sure you have the following installed:
 ```bash
   Copy code
   # Using npm
-  npm start
+  npm run dev
   
   # Or using yarn
-  yarn start
+  yarn dev
